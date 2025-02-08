@@ -46,15 +46,15 @@
 <br>
 <br>
 <div class="form-container">
-<form action="#" th:action="@{/movie-detail/{id}(id=${movie.id})}" th:object="${movie}" method="post">
+    <form action="#" th:action="@{/movie-detail/{id}(id=${movie.id})}" th:object="${movie}" method="post">
 
-    <input type="hidden" th:field="${movie.poster_path}"/>
-    <input type="hidden" th:field="${movie.title}"/>
-    <textarea rows="10" cols="50" th:field="*{overview}" placeholder="Update description"></textarea>
+        <input type="hidden" th:field="${movie.poster_path}"/>
+        <input type="hidden" th:field="${movie.title}"/>
+        <textarea rows="10" cols="50" th:field="*{overview}" placeholder="Update description"></textarea>
 
-    <button type="submit">Save</button>
+        <button type="submit">Save</button>
 
-</form>
+    </form>
 </div>
 
 
