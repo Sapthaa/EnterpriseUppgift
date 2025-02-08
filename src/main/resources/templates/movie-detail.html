@@ -30,32 +30,23 @@
 </nav>
 
 
-<div class="form-container">
+<div class="movie-detail-container">
     <div class="movie-detail">
         <img th:src="'https://image.tmdb.org/t/p/w500' + ${movie.poster_path}" alt="Movie Poster" class="movie-poster"/>
         <h2 th:text="${movie.title}"></h2>
         <p th:text="${movie.overview}"></p>
         <p><strong>Release Date:</strong> <span th:text="${movie.release_date}"></span></p>
     </div>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="form-container">
-    <form action="#" th:action="@{/movie-detail/{id}(id=${movie.id})}" th:object="${movie}" method="post">
 
+    <form action="#" th:action="@{/movie-detail/{id}(id=${movie.id})}" th:object="${movie}" method="post" class="movie-detail-form">
         <input type="hidden" th:field="${movie.poster_path}"/>
         <input type="hidden" th:field="${movie.title}"/>
-        <textarea rows="10" cols="50" th:field="*{overview}" placeholder="Update description"></textarea>
+        <textarea rows="10" th:field="*{overview}" placeholder="Update description"></textarea>
 
         <button type="submit">Save</button>
-
     </form>
 </div>
+
 
 
 

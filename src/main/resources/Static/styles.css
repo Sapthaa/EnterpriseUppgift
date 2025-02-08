@@ -196,3 +196,77 @@ button[type="submit"]:hover {
     color: #5cae5c;
 }
 
+.movie-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh; /* Anpassa höjden så att det blir proportionerligt */
+    padding-top: 100px; /* Lägger till extra utrymme för att undvika navbaren */
+}
+
+.movie-detail {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px; /* Sätter en maxbredd så att det inte blir för brett */
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.movie-poster {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.movie-detail h2 {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+.movie-detail p {
+    font-size: 1.1rem;
+    color: #bbb;
+}
+
+.movie-detail-form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.movie-detail-form textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #444;
+    border-radius: 5px;
+    background-color: #222;
+    color: white;
+    resize: none;
+}
+
+.movie-detail-form button {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px;
+    background-color: #f05a28;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.movie-detail-form button:hover {
+    background-color: #e04e24;
+}
+
