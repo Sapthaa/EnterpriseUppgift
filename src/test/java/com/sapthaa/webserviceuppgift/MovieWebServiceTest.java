@@ -2,6 +2,7 @@ package com.sapthaa.webserviceuppgift;
 
 import com.sapthaa.webserviceuppgift.model.Movie;
 import com.sapthaa.webserviceuppgift.movieRepository.MovieRepository;
+import com.sapthaa.webserviceuppgift.service.LoggerService;
 import com.sapthaa.webserviceuppgift.service.MovieWebService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class MovieWebServiceTest {
+
+    @Mock
+    private LoggerService logger;
 
     @Mock
     private MovieRepository movieRepository;
