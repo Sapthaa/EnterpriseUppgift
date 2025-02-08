@@ -30,7 +30,7 @@ public class MovieWebServiceTest {
 
     @Test
     void testGetAllMoviesForWeb() {
-        // Given
+
         Movie movie1 = new Movie();
         movie1.setTitle("The Hobbit");
         movie1.setMovieId(2);
@@ -41,10 +41,9 @@ public class MovieWebServiceTest {
         movie2.setOverview("The Hobbits and the wild");
         when(movieRepository.findAll()).thenReturn(List.of(movie1, movie2));
 
-        // When
         List<Movie> movies = movieWebService.getAllMoviesForWeb();
 
-        // Then
+        assertEquals("The Hobbits and the wild", movie1.getOverview());
         assertNotNull(movies);
         assertEquals(2, movies.size());
         verify(movieRepository, times(1)).findAll();
@@ -52,7 +51,7 @@ public class MovieWebServiceTest {
 
     @Test
     void testGetMovieById() {
-        // Given
+
         Long movieId = 1L;
         Movie movie = new Movie();
         movie.setId(movieId);
@@ -60,10 +59,8 @@ public class MovieWebServiceTest {
         movie.setOverview("The Hobbits and the wild");
         when(movieRepository.findById(movieId)).thenReturn(Optional.of(movie));
 
-        // When
         Movie result = movieWebService.getMovieById(movieId);
 
-        // Then
         assertNotNull(result);
         assertEquals("Movie 1", result.getTitle());
         verify(movieRepository, times(1)).findById(movieId);
@@ -71,7 +68,7 @@ public class MovieWebServiceTest {
 
     @Test
     void testSearchMoviesByTitle() {
-        // Given
+
         Movie movie1 = new Movie();
         movie1.setTitle("Movie 1");
         movie1.setMovieId(2);
@@ -82,10 +79,9 @@ public class MovieWebServiceTest {
         movie2.setOverview("The Hobbits and the wild");
         when(movieRepository.findByTitleContainingIgnoreCase(movie1.getTitle())).thenReturn(List.of(movie1, movie2));
 
-        // When
+
         List<Movie> movies = movieWebService.searchMoviesByTitle(movie1.getTitle());
 
-        // Then
         assertNotNull(movies);
         assertEquals(2, movies.size());
         assertTrue(movies.stream().allMatch(movie -> movie.getTitle().contains("Movie")));
@@ -94,7 +90,7 @@ public class MovieWebServiceTest {
 
     @Test
     void testUpdateMovieOverview() {
-        // Given
+
         Movie movie1 = new Movie();
         movie1.setTitle("Movie 1");
         movie1.setMovieId(2);
@@ -102,10 +98,8 @@ public class MovieWebServiceTest {
         String newOverview = "Overview 1, Movie 1";
         when(movieRepository.saveAndFlush(movie1)).thenReturn(movie1);
 
-        // When
         String updatedTitle = movieWebService.updateMovieOverview(movie1);
 
-        // Then
         assertEquals("Movie 1", updatedTitle);
         assertEquals(newOverview, movie1.getOverview());
         verify(movieRepository, times(1)).saveAndFlush(movie1);
