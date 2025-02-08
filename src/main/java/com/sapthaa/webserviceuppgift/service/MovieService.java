@@ -25,6 +25,10 @@ public class MovieService {
 
     // Använder <Object> för att kunna returnera felmeddelanden eftersom jag inte har en error response klass
 
+    public List<Movie> getAllMoviesFromDatabase() {
+        return movieRepository.findAll();
+    }
+
     // Get
     public ResponseEntity<Object> getAllMovies() {
         List<Movie> movies = movieRepository.findAll();
@@ -64,7 +68,6 @@ public class MovieService {
     public ResponseEntity<String> getMovieReleaseDateById(Long id) {
         Optional<Movie> movie = movieRepository.findById(id);
 
-
         if (movie.isPresent()) {
             return new ResponseEntity<>("Movie : " + movie.get().getTitle() + ", Release date: " + movie.get().getRelease_date(), HttpStatus.OK);
         }
@@ -75,7 +78,6 @@ public class MovieService {
     // Search movie (min databas)
     public ResponseEntity<Object> searchMovieByTitle(String title) {
         List<Movie> movies = movieRepository.findByTitleContainingIgnoreCase(title);
-
 
         if (movies.isEmpty()) {
             return new ResponseEntity<>("Movie with title: " + title + " could not be found", HttpStatus.NOT_FOUND);

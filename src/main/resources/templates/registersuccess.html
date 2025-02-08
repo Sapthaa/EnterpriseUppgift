@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registreringen Lyckades!</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/all-movies">All Movies</a></li>
+        <li><a href="/search-movie">Search Movie</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+        <li><a href="/admin">Admin</a></li>
+        <li>
+            <form th:action="@{/logout}" method="post" class="logout-form">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <button type="submit" class="logout-button">Logga ut</button>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2>Registreringen lyckades!</h2>
+    <a href="/login">Logga in här</a>
+</div>
+
+<footer>
+    <p>&copy; 2025 Gang Gang.</p>
+</footer>
+
+</body>
+</html>
